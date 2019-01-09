@@ -1,0 +1,6 @@
+<!--components/header/header.wxml-->
+<view class='btns'>
+  <span bindtap="tomy" style="background-color:{{mycolor}};font-size:{{mysize}}">我的文件</span>
+  <span bindtap="toup" style="background-color:{{upcolor}};font-size:{{upsize}}">添加上传</span>
+</view>
+<view class='line'></view>

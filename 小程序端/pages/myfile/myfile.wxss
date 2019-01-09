@@ -1,0 +1,27 @@
+/* pages/myfile/myfile.wxss */
+.filelist{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  /* //justify-content: center;
+  //margin:0 auto; */
+}
+
+.fileitem{
+  text-align: center;
+  width: 30%;
+  height: 220px;
+  background-color: #e9e8e8;
+  margin: 5px;
+}
+
+.fileitem image{
+  margin-top:10px;
+  width: 80%;
+  height: 57%;
+}
+
+.time{
+  font-size:15px;
+  color: #636060
+}

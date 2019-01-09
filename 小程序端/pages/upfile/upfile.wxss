@@ -1,0 +1,81 @@
+/* pages/upfile/upfile.wxss */
+.content{
+  width: 100%;
+  height:100%;
+  float: top
+}
+
+.upfile{
+  background-color: #b6e8b6;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 40%;
+  width: 43%;
+}
+.upfile image{
+  width: 160px;
+  height: 160px;
+}
+.upfile text{
+  padding-bottom: 20px;
+  text-align: center;
+  color: gray;
+}
+
+.transcode{
+  margin-top: 50px;
+  width: 100px;
+}
+
+.modal{
+  justify-content: center;
+  margin: 0 auto;
+  margin-top:45%;
+  width: 88%;
+  background-color: #f0f0f0
+}
+
+.title{
+  text-align: center;
+  size:50px;
+  margin: 7px;
+  width: 100%;
+  color: white;
+}
+.headline{
+  background-color: #2ec979;
+  text-align: center;
+  size:22px;  
+  display: flex;
+}
+
+.modalline{
+  display: flex;
+  margin: 5px;
+  justify-content: right;
+}
+.modalline text{
+  margin-right: 10px;
+}
+.modalline input{
+  background-color: white;
+  width: 70%
+}
+
+.note{
+  color: #999999;
+  size:6px;
+}
+
+.btnline{
+  display: flex;
+}
+.btnline button{
+  width: 50%;
+}
+.submit{
+  background-color:#2ec979;
+}

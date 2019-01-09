@@ -1,0 +1,49 @@
+<!--pages/upfile/upfile.wxml-->
+<view bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+  <header page="up"></header>
+
+  <view wx:if="{{hideselect}}">
+    <view class='upfile' bindtap='show'>
+      <image src='/res/upfile.png' mode='scaleToFill'></image>
+      <text>{{formData.fileName}}</text>
+    </view>
+    <button class='transcode' bindtap='getstatus'>转码</button>
+  </view>
+
+  <view wx:else class='modal'>
+    <view class='headline'>
+      <text class='title'>添加文件</text>
+    </view>
+
+    <view class='modalline'>
+      <text>文件类型</text>
+      <!-- <button bindtap='addimg'>图片</button>
+      <button bindtap='addvid'>音频</button>
+      <button bindtap='addvid'>视频</button> -->
+      <radio-group>
+        <radio bindtap='addimg' checked='{{img}}'>图片</radio>
+        <radio bindtap='addaud' checked='{{aud}}'>音频</radio>
+        <radio bindtap='addvid' checked='{{vid}}'>视频</radio>
+      </radio-group>
+    </view>
+
+    <view class='modalline'>
+      <text>文件名称</text>
+      <input placeholder='请命名英文文件' bindinput='inputFN'></input>
+    </view>
+
+    <view class='modalline'>
+      <text>转码格式</text>
+      <input placeholder='请输入目标格式' bindinput='getfocus' bindblur='inputTF'></input>
+    </view>
+
+    <text class='note'>{{select}}</text>
+
+    <view class='btnline'>
+      <button bindtap='clearfile'>取消</button>
+      <button class='submit' bindtap='getInfo'>提交</button>
+    </view>
+
+  </view>
+
+</view>

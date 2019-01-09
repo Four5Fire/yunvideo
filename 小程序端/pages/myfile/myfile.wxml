@@ -1,0 +1,25 @@
+<!--pages/myfile/myfile.wxml-->
+<view class='content' bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+  <header page="my"></header>
+  <view class='filelist'>
+    <view class='fileitem' data-id='{{item.fileId}}' wx:for="{{files}}" wx:key="{{fileId}}" bindtap='download'>
+         <!-- <view wx:if="{{item.status}}=='img'" src='/res/img.jpg'></view>
+      <view wx:elif="{{item.status}}=='aud'">{{item.status}}</view>
+      <view wx:elif="{{item.status}}=='vid'"> {{item.status}}</view> -->
+      <!-- <view wx:if="{{item.status=='img'}}">
+        <image src='/res/img.jpg'></image>
+      </view>
+      <view wx:elif="{{item.status=='aud'}}">
+        <image src='/res/aud.jpg'></image>
+      </view>
+      <view wx:elif="{{item.status=='vid'}}">
+        <image src='/res/vid.jpg'></image>
+      </view> -->
+        <image wx:if="{{item.status=='img'}}" src='/res/image.jpg'></image>
+        <image wx:elif="{{item.status=='aud'}}" src='/res/audio.jpg'></image>
+        <image wx:elif="{{item.status=='vid'}}" src='/res/video.jpg'></image>
+      <text>{{item.fileName+'\n'}}</text>
+      <text class='time'>{{item.time}}</text>
+    </view>
+  </view>
+</view>

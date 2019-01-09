@@ -1,0 +1,5 @@
+export const API_LOGIN = '/login'
+export const API_GETFLIST = '/q_taskFile'
+export const API_UPLOADFILE = '/uploadFile'
+export const API_DOWNLOADFILE = '/downloadFile/'
+export const API_CHECKSTATUS = '/q_taskStatus/'
