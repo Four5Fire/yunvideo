@@ -103,6 +103,7 @@ public class IndexController {
         String sessionKey = request.getHeader("sessionId");
         String openId = redisClient.opsForValue().get(sessionKey);
         String fileName = request.getParameter("fileName");
+		System.out.println(fileName);
         String targetFormat = request.getParameter("targetFormat");
         long fileId = System.currentTimeMillis();
 
@@ -134,6 +135,7 @@ public class IndexController {
         new Thread(new ChangeFormat(path1+"/"+fileName,path2+"/"+fileName.split("\\.")[0]+"."+targetFormat,task,taskDao)).start();
         resultJson.put("code","000");
         resultJson.put("desc","上传成功");
+		resultJson.put("fileId",fileId);
         return new ResponseEntity<JSONObject>(resultJson,HttpStatus.OK);
     }
 
@@ -186,6 +188,17 @@ public class IndexController {
         String sessionKey = request.getHeader("sessionId");
         String openId = redisClient.opsForValue().get(sessionKey);
         Task task = taskDao.findByOpenIdAndFileId(openId,fileId);
+		if (task == null){
+			JSONObject resultJson = new JSONObject();
+			resultJson.put("code","001");
+			resultJson.put("desc","该资源不存在");
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("application/json;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.append(resultJson.toString());
+			out.close();
+			return;
+		}
         if (task.getStatus().equals("0")){
             JSONObject resultJson = new JSONObject();
             resultJson.put("code","006");
@@ -196,7 +209,7 @@ public class IndexController {
             out.append(resultJson.toString());
             out.close();
             return ;
-        }else {
+        }else if (task.getStatus().equals("1")){
             JSONObject resultJson = new JSONObject();
             resultJson.put("code","000");
             resultJson.put("desc","视频转码完成");
@@ -206,7 +219,17 @@ public class IndexController {
             out.append(resultJson.toString());
             out.close();
             return ;
-        }
+        }else {
+			JSONObject resultJson = new JSONObject();
+			resultJson.put("code","002");
+			resultJson.put("desc","服务器错误");
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("application/json;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.append(resultJson.toString());
+			out.close();
+            return ;
+		}
     }
 
     private String getCutTime(){

@@ -29,17 +29,15 @@ public class ChangeFormat implements Runnable {
 
     @Override
     public void run() {
-        String command = "ffmpeg -i "+sourcePath+" "+goalPath;
+        String command = "ffmpeg -i "+sourcePath+" -strict -2 "+goalPath;
+		System.out.println(command);
         task = taskDao.findByOpenIdAndFileId(task.getOpenId(),task.getFileId());
         try {
             Process process = Runtime.getRuntime().exec(command);
             process.waitFor();
-            System.out.println(task);
             task.setStatus("1");
-            System.out.println(task);
             taskDao.save(task);
             task = taskDao.findByOpenIdAndFileId(task.getOpenId(),task.getFileId());
-            System.out.println(task);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
